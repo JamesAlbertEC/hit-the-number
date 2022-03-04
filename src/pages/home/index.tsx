@@ -45,7 +45,7 @@ export function Home() {
   return (
     <Container>
       <Header onOpenRegister={handleOpenRegister} />
-      <Display number={5} />
+      <Display number={8} />
       <Restart />
       <Form />
       <Table />
