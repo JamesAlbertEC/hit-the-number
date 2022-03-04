@@ -32,7 +32,6 @@ export function TransactionsProvider({ children }: ITransactionsProviderProps) {
 
   async function createTransaction(transactionInput: TransactionInput) {
     const response = await api.post('/transactions', transactionInput)
-    console.log(response.data);
     const { transaction } = response.data;
 
     setTransactions([

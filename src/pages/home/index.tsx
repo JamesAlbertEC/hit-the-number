@@ -8,7 +8,6 @@ import { Restart } from "../../components/Restart";
 import { Table } from "../../components/Table";
 import { Modal } from "../../components/Modal";
 
-import { GlobalStyle } from "../../styles.ts/global";
 import { Container, FormModal } from "./styles";
 
 import { useTransactions } from "../../hooks/useTransactions";
@@ -46,7 +45,7 @@ export function Home() {
   return (
     <Container>
       <Header onOpenRegister={handleOpenRegister} />
-      <Display />
+      <Display number={5} />
       <Restart />
       <Form />
       <Table />
@@ -77,7 +76,6 @@ export function Home() {
           </button>
         </FormModal>
       </Modal>
-      <GlobalStyle />
     </Container>
   );
 }
