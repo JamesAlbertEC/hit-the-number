@@ -1,18 +1,27 @@
-import { useState } from 'react';
-
+import { FormEvent, useState } from 'react';
 import { Container, Input } from './styles';
 
-export function Form() {
-  const [value, setValue] = useState(0);
+interface IFormProps {
+  setValue: any;
+}
+
+export function Form({ setValue }: IFormProps) {
+  const [temp, setTemp] = useState(0);
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+
+    setValue(temp);
+  }
 
   return (
-    <Container>
+    <Container onSubmit={handleSubmit}>
       <Input
         type="text"
         placeholder="Digite um número"
-        value={value}
-        onChange={(props) => {
-          setValue(Number(props.target.value))
+        value={temp}
+        onChange={event => {
+          setTemp(Number(event.target.value))
         }}
       />
       <button
@@ -23,3 +32,4 @@ export function Form() {
     </Container>
   );
 }
+

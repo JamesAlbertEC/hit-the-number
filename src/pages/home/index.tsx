@@ -4,19 +4,19 @@ import ReactModal from "react-modal";
 import { Header } from "../../components/Header";
 import { Form } from "../../components/Form";
 import { Display } from "../../components/Display";
-import { Restart } from "../../components/Restart";
 import { Table } from "../../components/Table";
-import { Modal } from "../../components/Modal";
+import { Modal } from "../../components/components/Modal";
 
 import { Container, FormModal } from "./styles";
 
 import { useTransactions } from "../../hooks/useTransactions";
-
+import { Game } from "../../components/Game";
 
 ReactModal.setAppElement('#root');
 
 export function Home() {
   const { createTransaction } = useTransactions();
+  const [value, setValue] = useState(0);
   const [register, setRegister] = useState(false);
   const [nick, setNick] = useState('');
   const [record, setRecord] = useState(0);
@@ -45,9 +45,9 @@ export function Home() {
   return (
     <Container>
       <Header onOpenRegister={handleOpenRegister} />
-      <Display number={8} />
-      <Restart />
-      <Form />
+      <Display number={value} />
+      <Game comparedNumber={value} setReset={setValue} />
+      <Form setValue={setValue} />
       <Table />
       <Modal
         isOpen={register}

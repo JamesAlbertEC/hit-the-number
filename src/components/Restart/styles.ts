@@ -5,7 +5,7 @@ export const Container = styled.div`
   margin: auto;
   align-items: center;
   justify-content: center;
-  padding-top: 2rem;
+  padding: 1rem;
 
   button {
     width: 25%;

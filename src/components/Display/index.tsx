@@ -1,4 +1,4 @@
-import { Container } from "../Header/styles"
+import { Container } from "./styles"
 import { useEffect, useState } from "react";
 import { SvgDisplay } from '../SvgDisplay'
 
@@ -7,8 +7,8 @@ interface IDisplayProps {
 }
 
 const SEGMENT_STATUS = {
-  off: "#ffffc2",
-  on: "#181818",
+  on: ["#baffff", "#84ffff"],
+  off: ["none", "none"],
 }
 
 const SEGMENTS_MAPPED = {
@@ -22,39 +22,43 @@ const SEGMENTS_MAPPED = {
 }
 
 export function Display({ number }: IDisplayProps) {
-  // const numbers = String(number).split(""); ["2", "3"]
-  const [segments, setSegments] = useState([
-    SEGMENT_STATUS.off,
-    SEGMENT_STATUS.off,
-    SEGMENT_STATUS.off,
-    SEGMENT_STATUS.off,
-    SEGMENT_STATUS.off,
-    SEGMENT_STATUS.off,
-    SEGMENT_STATUS.off,
+  const numbers = String(number).split("");
+
+  const [displays, setDisplays] = useState([
+    [
+      SEGMENT_STATUS.off,
+      SEGMENT_STATUS.off,
+      SEGMENT_STATUS.off,
+      SEGMENT_STATUS.off,
+      SEGMENT_STATUS.off,
+      SEGMENT_STATUS.off,
+      SEGMENT_STATUS.off,
+    ],
   ]);
-  const [top, rightTop, rightBottom, bottom, leftBottom, leftTop, middle] = segments;
 
   useEffect(() => {
-    const newSegments = Object.values(SEGMENTS_MAPPED).map(segmentMapped => {
-      return segmentMapped.includes(number) ? SEGMENT_STATUS.on : SEGMENT_STATUS.off;
+    const mappedSegments = numbers.map(num => {
+      const newSegments = Object.values(SEGMENTS_MAPPED).map(segmentMapped => {
+        return segmentMapped.includes(Number(num)) ? SEGMENT_STATUS.on : SEGMENT_STATUS.off;
+      })
+      return newSegments
     })
-
-    setSegments(newSegments);
+    setDisplays(mappedSegments);
   }, [number]);
 
   return (
     <Container>
-      {/* {numbers.map(num => ( */}
+      {displays.map((display) => (
         <SvgDisplay segments={{
-          top,
-          rightTop,
-          rightBottom,
-          bottom,
-          leftBottom,
-          leftTop,
-          middle
+          top: display[0],
+          rightTop: display[1],
+          rightBottom: display[2],
+          bottom: display[3],
+          leftBottom: display[4],
+          leftTop: display[5],
+          middle: display[6],
         }} />
-      {/* ))} */}
+      ))}
     </Container >
   );
 }

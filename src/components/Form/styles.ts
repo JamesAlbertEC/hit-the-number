@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.form`
   display: flex;
   margin: auto;
-  padding: 1rem;
+  padding-bottom: 1rem;
   align-items: center;
   justify-content: center;
 

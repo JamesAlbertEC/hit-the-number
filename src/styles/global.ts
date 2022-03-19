@@ -2,13 +2,13 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   :root {
-    --primary-high: #7ecb20;
-    --primary-medium: #b2ff59;
-    --primary-low: #e7ff8c;
+    --primary-high: #00363a;
+    --primary-medium: #006064;
+    --primary-low: #428e92;
 
-    --secondary-high: #99cc60;
-    --secondary-medium: #ccff90;
-    --secondary-low: #ffffc2;
+    --secondary-high: #006978;
+    --secondary-medium: #0097a7;
+    --secondary-low: #56c8d8;
   }
 
   * {
@@ -30,6 +30,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: var(--primary-medium);
+    color: #000000;
     -webkit-font-smoothing: antialiased;
     display: flex;
     
@@ -50,6 +51,7 @@ export const GlobalStyle = createGlobalStyle`
 
   button {
     cursor: pointer;
+    color: #ffffff;
     background: var(--secondary-high);
     transition: 0.3s;
 
